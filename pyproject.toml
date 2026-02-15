@@ -1,0 +1,51 @@
+[build-system]
+requires = ["setuptools>=61", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "music-math-dna"
+version = "0.1.0"
+description = "Klasik müziğin matematiksel DNA'sını analiz eden ve generatif müzik üreten araştırma projesi."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [
+  { name = "Researcher", email = "researcher@example.com" }
+]
+keywords = ["music", "classical-music", "computational-musicology", "music21", "machine-learning"]
+
+dependencies = [
+  "music21",
+  "librosa",
+  "pretty_midi",
+  "numpy",
+  "pandas",
+  "scikit-learn",
+  "torch",
+  "umap-learn",
+  "gudhi",
+  "networkx",
+  "matplotlib",
+  "seaborn",
+  "plotly",
+  "tqdm",
+  "Pillow",
+]
+
+[project.optional-dependencies]
+dev = [
+  "black",
+  "ruff",
+  "mypy",
+  "pytest",
+  "pytest-cov",
+]
+
+[project.urls]
+homepage = "https://example.com/music-math-dna"
+repository = "https://example.com/music-math-dna.git"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["music_math*"]
+
