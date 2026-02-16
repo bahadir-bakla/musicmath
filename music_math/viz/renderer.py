@@ -442,6 +442,18 @@ def render_fractal(
     return img
 
 
+# Import new renderers
+try:
+    from music_math.viz.renderer_new import (
+        render_emotional_heatmap,
+        render_spectrogram_art,
+        render_pattern_art,
+    )
+    HAS_NEW_RENDERERS = True
+except ImportError:
+    HAS_NEW_RENDERERS = False
+    render_emotional_heatmap = render_spectrogram_art = render_pattern_art = None
+
 RENDERERS = {
     "kalman": render_kalman,
     "spectral": render_spectral,
@@ -449,6 +461,13 @@ RENDERERS = {
     "phi_arc": render_phi_arc,
     "fractal": render_fractal,
 }
+
+if HAS_NEW_RENDERERS:
+    RENDERERS.update({
+        "emotional_heatmap": render_emotional_heatmap,
+        "spectrogram_art": render_spectrogram_art,
+        "pattern_art": render_pattern_art,
+    })
 
 
 def render_music_art(

@@ -10,12 +10,15 @@ from enum import Enum
 
 
 class RenderMode(str, Enum):
-    """Muzikten goruntu uretme modlari (ileride implemente edilecek)."""
+    """Muzikten goruntu uretme modlari."""
     KALMAN = "kalman"       # Zaman serisi -> Kalman filtre -> duzgunlesmis sinyal -> renk
     SPECTRAL = "spectral"   # Spektral ozellikler -> renk kanallari
     WAVEFORM = "waveform"   # Dalga formu yogunluk -> ton
     PHI_ARC = "phi_arc"     # Altin oran noktalarinda renk gecisleri
     FRACTAL = "fractal"     # Fractal boyut / self-similarity -> doku
+    EMOTIONAL_HEATMAP = "emotional_heatmap"  # Duygu haritasi: major/minor -> sicak/soguk renkler
+    SPECTROGRAM_ART = "spectrogram_art"      # Spektrogram tarzi zaman-frekans gorseli
+    PATTERN_ART = "pattern_art"              # Bulunan pattern'leri vurgulayan gorsel
 
 
 # Duygu / estetik odakli renk paletleri (modern sanat, soyut)
@@ -77,6 +80,9 @@ def _mode_description(m: RenderMode) -> str:
         RenderMode.WAVEFORM: "Waveform intensity → luminance and hue.",
         RenderMode.PHI_ARC: "Golden-ratio time points drive color transitions.",
         RenderMode.FRACTAL: "Fractal dimension and self-similarity → texture and density.",
+        RenderMode.EMOTIONAL_HEATMAP: "Major/minor tonality → warm/cool emotional heatmap.",
+        RenderMode.SPECTROGRAM_ART: "Time-frequency spectrogram visualization with harmonic layers.",
+        RenderMode.PATTERN_ART: "Detected interval patterns highlighted with color overlays.",
     }
     return d.get(m, "")
 
